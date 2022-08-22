@@ -14,6 +14,8 @@ class CreateUserAction {
         
         return res.status(201).json({message: "User created"});
     }
+    //prueba si anda Fabri
+    //segunda prueba
 }
 
 export default new CreateUserAction();
