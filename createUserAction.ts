@@ -12,7 +12,7 @@ class CreateUserAction {
         
         await createUserHandler.execute(command);
         
-        return res.status(201).json({message: "User created"});
+        return res.status(201).json({message: "User created!!!"});
     }
 }
 
