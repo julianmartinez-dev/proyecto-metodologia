@@ -1,7 +1,6 @@
 import express from 'express';
 import CommonRoutes from './http/routes/common.routes';
 import cors from 'cors';
-import UserRoutes from './http/routes/user.routes';
 import { log } from 'debug';
 import expressWinston from 'express-winston';
 import winston from 'winston';
@@ -27,7 +26,8 @@ const routes: Array<CommonRoutes> = [];
 app.use(cors());
 app.use(express.json());
 
-routes.push(new UserRoutes(app));
+// Add router
+// routes.push(new YourRouter())
 
 app.listen(3000, () => {
   routes.forEach((route: CommonRoutes) => {
