@@ -1,4 +1,4 @@
-export class CreateUserCommand {
+export class CreatePassengerCommand {
     private readonly fullname: string;
     private readonly email: string;
     private readonly identityCard: string;
