@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
-import { UpdatePassengerCommand } from "C:/Users/Usuario/Desktop/Repo Metodología/proyecto-metodologia/server/src/application/commands/update.passenger.command";
-import updatePassengerHandler from "C:/Users/Usuario/Desktop/Repo Metodología/proyecto-metodologia/server/src/application/handlers/passengers/update.passenger.handler";
-
+import { UpdatePassengerCommand } from '../../application/commands/update.passenger.command';
+import updatePassengerHandler from '../../application/handlers/passengers/update.passenger.handler';
 class UpdatePassengerAction {
   async run(req: Request, res: Response) {
     try {
