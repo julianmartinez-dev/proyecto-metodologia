@@ -4,6 +4,7 @@ import cors from 'cors';
 import { log } from 'debug';
 import expressWinston from 'express-winston';
 import winston from 'winston';
+import PassengerRoutes from './http/routes/passenger.routes';
 
 const app: express.Application = express();
 
@@ -27,7 +28,7 @@ app.use(cors());
 app.use(express.json());
 
 // Add router
-// routes.push(new YourRouter())
+ routes.push(new PassengerRoutes(app))
 
 app.listen(3000, () => {
   routes.forEach((route: CommonRoutes) => {
