@@ -6,11 +6,11 @@ class UpdatePassengerAction {
     try {
       const command = new UpdatePassengerCommand(
         req.params.id,
-        req.body.fullname,
+        req.body.fullName,
         req.body.email,
         req.body.identityCard,
       );
-
+console.log(command)
       try {
         await updatePassengerHandler.execute(command);
       } catch (error) {
