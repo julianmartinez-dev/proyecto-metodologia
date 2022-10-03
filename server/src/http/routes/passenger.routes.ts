@@ -1,6 +1,5 @@
 import {Application} from "express";
 import CommonRoutes from "./common.routes";
-//import listPassengerAction from "../actions/create.passenger.action";
 import createPassengerAction from "../actions/create.passenger.action";
 import updatePassengerAction from "../actions/update.passenger.action";
 import listPassengerAction from "../actions/list.passenger.action";
