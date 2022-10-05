@@ -1,7 +1,7 @@
 import { v4 } from "uuid";
 
 
-export class Acommodation{
+export class Accommodation{
 
     private id: string;
     private name: string;
@@ -20,15 +20,15 @@ export class Acommodation{
     public static create(name:string, pricePerNight: number){
         
         const id= v4();
-        const acommodation = new Acommodation(id,name,pricePerNight);
+        const accommodation = new Accommodation(id,name,pricePerNight);
 
-        return acommodation;
+        return accommodation;
     }
 
 
-    static fromPrimities(primitives:any): Acommodation{
-        const acommodation = new Acommodation(primitives.id, primitives.name, primitives.pricePerNight);
-        return acommodation;
+    static fromPrimities(primitives:any): Accommodation{
+        const accommodation = new Accommodation(primitives.id, primitives.name, primitives.pricePerNight);
+        return accommodation;
 
 
     }
