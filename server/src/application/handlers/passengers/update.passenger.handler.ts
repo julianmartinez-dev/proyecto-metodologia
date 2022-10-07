@@ -1,5 +1,5 @@
 import passengerRepository from '../../../infrastructure/repositories/passenger.repository';
-import { UpdatePassengerCommand } from '../../commands/update.passenger.command';
+import { UpdatePassengerCommand } from '../../commands/passenger/update.passenger.command';
 
 class UpdatePassengerHandler {
   async execute(command: UpdatePassengerCommand) {
