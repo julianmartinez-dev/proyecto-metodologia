@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { UpdatePassengerCommand } from '../../../application/commands/update.passenger.command';
 import updatePassengerHandler from '../../../application/handlers/passengers/update.passenger.handler';
+import { UpdatePassengerCommand } from '../../../application/commands/passenger/update.passenger.command';
 
 class UpdatePassengerAction {
   async run(req: Request, res: Response) {

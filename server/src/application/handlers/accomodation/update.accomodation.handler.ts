@@ -1,5 +1,5 @@
 import accommodationRepository from '../../../infrastructure/repositories/accommodation.repository';
-import { UpdateAccomodationCommand } from '../../commands/update.accomodation.command';
+import { UpdateAccomodationCommand } from '../../commands/accomodation/update.accomodation.command';
 
 class UpdateAccomodationHandler {
   async execute(command: UpdateAccomodationCommand) {

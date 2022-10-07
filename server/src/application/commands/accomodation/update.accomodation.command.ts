@@ -1,6 +1,5 @@
 import uuidValidate from 'uuid-validate';
 
-
 export class UpdateAccomodationCommand {
   private readonly id: string;
   private readonly name: string;
@@ -24,13 +23,13 @@ export class UpdateAccomodationCommand {
     this.pricePerNight = pricePerNight;
   }
 
-    getId(): string {
-        return this.id;
-    }
-    getName(): string {
-        return this.name;
-    }
-    getPricePerNight(): number {
-        return this.pricePerNight;
-    }
+  getId(): string {
+    return this.id;
+  }
+  getName(): string {
+    return this.name;
+  }
+  getPricePerNight(): number {
+    return this.pricePerNight;
+  }
 }

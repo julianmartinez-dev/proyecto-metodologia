@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { CreatePassengerCommand } from '../../../application/commands/create.passenger.command';
+import { CreatePassengerCommand } from '../../../application/commands/passenger/create.passenger.command';
 import createPassengerHandler from '../../../application/handlers/passengers/create.passenger.handler';
 
 class CreatePassengerAction {
@@ -18,4 +18,4 @@ class CreatePassengerAction {
   }
 }
 
-export default new CreatePassengerAction()
+export default new CreatePassengerAction();

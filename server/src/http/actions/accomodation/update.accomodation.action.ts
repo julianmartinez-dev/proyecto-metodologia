@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { UpdateAccomodationCommand } from '../../../application/commands/update.accomodation.command';
+import { UpdateAccomodationCommand } from '../../../application/commands/accomodation/update.accomodation.command';
 import updateAccomodationHandler from '../../../application/handlers/accomodation/update.accomodation.handler';
 
 class UpdateAccomoationAction {
