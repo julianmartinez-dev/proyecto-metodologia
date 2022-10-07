@@ -1,8 +1,9 @@
 import {Application} from "express";
 import CommonRoutes from "./common.routes";
-import createPassengerAction from "../actions/create.passenger.action";
-import updatePassengerAction from "../actions/update.passenger.action";
-import listPassengerAction from "../actions/list.passenger.action";
+import createPassengerAction from "../actions/passengers/create.passenger.action";
+import updatePassengerAction from "../actions/passengers/update.passenger.action";
+import listPassengerAction from "../actions/passengers/list.passenger.actions";
+
 
 class PassengerRoutes extends CommonRoutes {
     constructor(app: Application) {
