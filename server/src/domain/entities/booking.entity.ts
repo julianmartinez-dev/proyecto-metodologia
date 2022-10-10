@@ -12,7 +12,7 @@ export class Booking {
   private id: string;
   private owner: Passenger;
   private passengers: Passenger[];
-  private accomodation: Accommodation;
+  private accommodation: Accommodation;
   private from: Date;
   private to: Date;
   private status: BookingStatus;
@@ -21,7 +21,7 @@ export class Booking {
     id: string,
     owner: Passenger,
     passengers: Passenger[],
-    accomodation: Accommodation,
+    accommodation: Accommodation,
     from: Date,
     to: Date,
     status: BookingStatus = BookingStatus.pending,
@@ -29,7 +29,7 @@ export class Booking {
     this.id = id;
     this.owner = owner;
     this.passengers = passengers;
-    this.accomodation = accomodation;
+    this.accommodation = accommodation;
     this.from = from;
     this.to = to;
     this.status = status;
@@ -38,7 +38,7 @@ export class Booking {
   public static create(
     owner: Passenger,
     passengers: Passenger[],
-    accomodation: Accommodation,
+    accommodation: Accommodation,
     from: Date,
     to: Date,
     status: BookingStatus = BookingStatus.pending,
@@ -57,7 +57,7 @@ export class Booking {
 
     //Create new booking
     const id = v4();
-    const booking = new Booking(id, owner, passengers, accomodation, from, to, status);
+    const booking = new Booking(id, owner, passengers, accommodation, from, to, status);
 
     return booking;
   }
@@ -68,8 +68,8 @@ export class Booking {
   changePassengers(passengers: Passenger[]): void {
     this.passengers = passengers;
   }
-  changeAccomodation(accomodation: Accommodation): void {
-    this.accomodation = accomodation;
+  changeAccomodation(accommodation: Accommodation): void {
+    this.accommodation = accommodation;
   }
   changeFrom(from: Date): void {
     this.from = from;
@@ -86,7 +86,7 @@ export class Booking {
       primitives.id,
       primitives.owner,
       primitives.passengers,
-      primitives.accomodation,
+      primitives.accommodation,
       primitives.from,
       primitives.to,
       primitives.status,
@@ -100,7 +100,7 @@ export class Booking {
       id: this.id,
       owner: this.owner,
       passengers: this.passengers,
-      accomodation: this.accomodation,
+      accommodation: this.accommodation,
       from: this.from,
       to: this.to,
       status: this.status,
@@ -111,7 +111,7 @@ export class Booking {
   finalPrice(): number {
     const diff = this.to.getTime() - this.from.getTime();
     const days = diff / (1000 * 60 * 60 * 24);
-    const finalPrice = days * this.accomodation.getPricePerNight();
+    const finalPrice = days * this.accommodation.getPricePerNight();
     return finalPrice;
   }
 

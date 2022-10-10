@@ -1,8 +1,8 @@
 import accommodationRepository from '../../../infrastructure/repositories/accommodation.repository';
-import { UpdateAccomodationCommand } from '../../commands/accomodation/update.accomodation.command';
+import { UpdateAccommodationCommand } from '../../commands/accommodation/update.accommodation.command';
 
-class UpdateAccomodationHandler {
-  async execute(command: UpdateAccomodationCommand) {
+class UpdateAccommodationHandler {
+  async execute(command: UpdateAccommodationCommand) {
     const accommodation = await accommodationRepository.findOneById(command.getId());
 
     if (!accommodation) {
@@ -14,4 +14,4 @@ class UpdateAccomodationHandler {
   }
 }
 
-export default new UpdateAccomodationHandler();
+export default new UpdateAccommodationHandler();
