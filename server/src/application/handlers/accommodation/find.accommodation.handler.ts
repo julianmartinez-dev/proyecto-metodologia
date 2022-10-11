@@ -1,8 +1,8 @@
 import accommodationRepository from '../../../infrastructure/repositories/accommodation.repository'
-import { findByNameAccommodationComand } from '../../commands/accomodation/findByName.accommodation.aommand'
+import { findByNameAccommodationCommand } from '../../commands/accommodation/findByName.accommodation.command'
 
 class findAccommodationHandler{
-    async execute(command: findByNameAccommodationComand){
+    async execute(command: findByNameAccommodationCommand){
         const accommodation= accommodationRepository.findOneByName(command.getName())
         if (!accommodation) {
             throw new Error('accommodation not found');

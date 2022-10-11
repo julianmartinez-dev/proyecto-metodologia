@@ -1,6 +1,6 @@
 
 
-export class findByNameAccommodationComand{
+export class findByNameAccommodationCommand{
     private readonly name: string;
     constructor(name: string){
         if(!name){
