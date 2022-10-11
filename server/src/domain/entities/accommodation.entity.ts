@@ -18,7 +18,7 @@ export class Accommodation {
     return accommodation;
   }
 
-  static fromPrimities(primitives: any): Accommodation {
+  static fromPrimitives(primitives: any): Accommodation {
     const accommodation = new Accommodation(primitives.id, primitives.name, primitives.pricePerNight);
     return accommodation;
   }

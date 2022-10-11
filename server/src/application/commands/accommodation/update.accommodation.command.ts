@@ -1,6 +1,6 @@
 import uuidValidate from 'uuid-validate';
 
-export class UpdateAccomodationCommand {
+export class UpdateAccommodationCommand {
   private readonly id: string;
   private readonly name: string;
   private readonly pricePerNight: number;

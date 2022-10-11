@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { CreateAccommodationCommand } from '../../../application/commands/accomodation/create.accommodation.command';
-import createAccommodationHandler from '../../../application/handlers/accomodation/create.accommodation.handler';
+import { CreateAccommodationCommand } from '../../../application/commands/accommodation/create.accommodation.command';
+import createAccommodationHandler from '../../../application/handlers/accommodation/create.accommodation.handler';
 
 class CreateAccommodationAction {
   async run(req: Request, res: Response) {
