@@ -14,7 +14,7 @@ class AccomodationRoutes extends CommonRoutes {
 
     this.app.post('/accommodation', createAccommodationAction.run);
 
-    this.app.get('/accomodation/:name',listAccommodationAction.run);
+    this.app.get('/accommodation/:name',listAccommodationAction.run);
 
     this.app.put('/accommodation/:id', updateAccommodationAction.run);
 
