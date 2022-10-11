@@ -5,5 +5,5 @@ export class findBookingCommands{
     constructor(passenger: string, fromDate:Date){
         this.passenger= passenger;
         this.fromDate= fromDate;
-    }
+    } 
 }
