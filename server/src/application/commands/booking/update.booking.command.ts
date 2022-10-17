@@ -18,7 +18,7 @@ export class UpdateBookingCommand {
     this.status = status;
   }
 
-  getId(): String {
+  getId(): string {
     return this.id;
   }
 
