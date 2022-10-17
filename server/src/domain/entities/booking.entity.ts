@@ -95,6 +95,14 @@ export class Booking {
     return booking;
   }
 
+  getId(): string {
+    return this.id;
+  }
+
+  getFrom(): Date {
+    return this.from;
+  }
+
   toPrimitives(): any {
     return {
       id: this.id,
