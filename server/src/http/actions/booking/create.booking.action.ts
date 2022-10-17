@@ -7,8 +7,8 @@ class CreateBookingAction {
     const { id, owner, passengers, accomodation, from, to, status} = req.body;
 
     try {
-      //const command = new CreateBookingCommand(id, owner, passengers, accomodation, from, to, status);
-      //await createBookingHandler.execute(command);
+      const command = new CreateBookingCommand(id, owner, passengers, accomodation, from, to, status);
+      await createBookingHandler.execute(command);
 
       return res.status(201).json({ message: 'Booking created successfully' });
     } catch (error) {
