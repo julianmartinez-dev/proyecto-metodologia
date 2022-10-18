@@ -6,9 +6,7 @@ class ListPassengersAction {
   async run(req: Request, res: Response) {
     const { identityCard } = req.params;
 
-    console.log('identityCard', identityCard);
-
-    if(identityCard === "") {
+    if (identityCard === '') {
       res.status(400).send({ message: 'identityCard is required' });
       return;
     }
