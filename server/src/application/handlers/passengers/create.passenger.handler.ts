@@ -20,6 +20,7 @@ class CreatePassengerHandler {
     if (!validateIdentityCard(passenger.getIdentityCard())) {
       throw new Error('Invalid identity card');
     }
+    console.log(passenger)
 
     await passengerRepository.save(passenger);
   }

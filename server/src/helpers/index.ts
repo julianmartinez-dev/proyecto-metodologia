@@ -9,6 +9,7 @@ export function validateFullName(fullName: string) : Boolean {
 }
 
 export function validateIdentityCard(identityCard: string) : Boolean {
+    if(typeof identityCard !== 'string') return false;
     const regex = /^[0-9]{8}$/;
     return regex.test(identityCard);
 }

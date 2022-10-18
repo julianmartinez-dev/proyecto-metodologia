@@ -5,6 +5,8 @@ import createPassengerHandler from '../../../application/handlers/passengers/cre
 class CreatePassengerAction {
   async run(req: Request, res: Response) {
     const { fullName, email, identityCard } = req.body;
+    console.log(req.body)
+    console.log(typeof identityCard)
 
     try {
       const command = new CreatePassengerCommand(fullName, email, identityCard);
