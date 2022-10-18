@@ -78,7 +78,11 @@ export class Booking {
     this.to = to;
   }
   changeStatus(status: BookingStatus): void {
-    this.status = status;
+    if (this.status != 'pending') {
+      this.status = status;
+    } else {
+      throw new Error('Status is already Pending');
+    }
   }
 
   static fromPrimitives(primitives: any): Booking {
@@ -103,6 +107,10 @@ export class Booking {
     return this.from;
   }
 
+  getStatus(): BookingStatus {
+    return this.status;
+  }
+
   toPrimitives(): any {
     return {
       id: this.id,
@@ -122,5 +130,4 @@ export class Booking {
     const finalPrice = days * this.accommodation.getPricePerNight();
     return finalPrice;
   }
-
 }
