@@ -1,5 +1,5 @@
-import userRepository from '/accommodation.repository';
-import { Accommodation } from '../../domain/entities/accommodation.entity';
+import passengerRepository from '../passenger.repository';
+import { Accommodation } from '../../../domain/entities/accommodation.entity';
 import accommodationRepository from '../accommodation.repository';
 
 class Seeder {
@@ -19,8 +19,8 @@ class Seeder {
   }
 
   public async generate(): Promise<void> {
-    for (const user of this.accommodations) {
-      await accommodationRepository.save(Accommodation);
+    for (const accomodation of this.accommodations) {
+      await accommodationRepository.save(accomodation);
     }
   }
 }
