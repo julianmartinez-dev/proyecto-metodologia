@@ -21,6 +21,15 @@ class Repository {
     const passenger = this.passengers.find(u => u.getIdentityCard() === identityCard);
     return passenger ? passenger : null;
   }
+
+  async getAllPassengers() : Promise<Passenger[]> {
+    return this.passengers
+  }
+
+  async findOneById(id: string) : Promise<Passenger | null>{
+    const passenger = this.passengers.find(u => u.getId() === id);
+    return passenger ? passenger:null;
+  }
 }
 
 export default new Repository();
