@@ -4,7 +4,7 @@ import { CreatePassengerCommand } from '../../commands/passenger/create.passenge
 
 class CreatePassengerHandler {
   async execute(command: CreatePassengerCommand) {
-    const passenger = Passenger.create(command.getFullName(),command.getEmail(),  command.getIdentityCard());
+    const passenger = Passenger.create(command.getFullName(), command.getEmail(), command.getIdentityCard());
 
     await passengerRepository.save(passenger);
   }

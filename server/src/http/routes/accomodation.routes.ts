@@ -4,17 +4,14 @@ import updateAccommodationAction from '../actions/accomodation/update.accommodat
 import listAccommodationAction from '../actions/accomodation/list.accommodation.action';
 import CommonRoutes from './common.routes';
 
-
 class AccomodationRoutes extends CommonRoutes {
   constructor(app: Application) {
     super(app, 'Accomodation');
   }
   setUpRoutes(): Application {
-    //TODO: Change console.log for the correct action
-
     this.app.post('/accommodation', createAccommodationAction.run);
 
-    this.app.get('/accommodation/:name',listAccommodationAction.run);
+    this.app.get('/accommodation/:name', listAccommodationAction.run);
 
     this.app.put('/accommodation/:id', updateAccommodationAction.run);
 
