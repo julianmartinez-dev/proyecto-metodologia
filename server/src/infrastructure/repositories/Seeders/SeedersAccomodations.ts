@@ -1,8 +1,7 @@
-import passengerRepository from '../passenger.repository';
 import { Accommodation } from '../../../domain/entities/accommodation.entity';
 import accommodationRepository from '../accommodation.repository';
 
-class Seeder {
+export class Seeder {
   private accommodations: Array<Accommodation> = [];
   constructor() {
     this.accommodations.push(new Accommodation('33', 'tourist', 1233));
