@@ -1,6 +1,6 @@
 // import uuidValidate from "uuid-validate";
 
-export class FindByIdentityCard {
+export class FindByIdentityCardCommand {
   private readonly identityCard: string;
 
   constructor(identityCard: string) {
@@ -11,7 +11,7 @@ export class FindByIdentityCard {
     this.identityCard = identityCard;
   }
 
-  getId(): string {
+  getIdentityCard(): string {
     return this.identityCard;
   }
 }

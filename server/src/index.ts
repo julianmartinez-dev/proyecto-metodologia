@@ -6,6 +6,7 @@ import expressWinston from 'express-winston';
 import winston from 'winston';
 import PassengerRoutes from './http/routes/passenger.routes';
 import AccomodationRoutes from './http/routes/accomodation.routes';
+import { Seeder } from './infrastructure/repositories/Seeders/SeedersAccomodations';
 
 const app: express.Application = express();
 
@@ -31,6 +32,10 @@ app.use(express.json());
 // Add router
 routes.push(new PassengerRoutes(app));
 routes.push(new AccomodationRoutes(app));
+
+//Add Seeder
+const seeder = new Seeder();
+seeder.generate();
 
 app.listen(3000, () => {
   routes.forEach((route: CommonRoutes) => {

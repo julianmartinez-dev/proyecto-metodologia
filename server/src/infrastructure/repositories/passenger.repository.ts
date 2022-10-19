@@ -22,13 +22,13 @@ class Repository {
     return passenger ? passenger : null;
   }
 
-  async getAllPassengers() : Promise<Passenger[]> {
-    return this.passengers
+  async getAllPassengers(): Promise<Passenger[]> {
+    return this.passengers;
   }
 
-  async findOneById(id: string) : Promise<Passenger | null>{
+  async findOneById(id: string): Promise<Passenger | null> {
     const passenger = this.passengers.find(u => u.getId() === id);
-    return passenger ? passenger:null;
+    return passenger ? passenger : null;
   }
 }
 

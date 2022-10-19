@@ -20,8 +20,11 @@ class Repository {
     return booking ? booking : null;
   }
 
-async findOneByNameAndFromDate(name: string, from: Date): Promise<Booking | null> {
-    const booking = this.bookings.find(((a: { passengers: { getName: () => string; }; }) => a.passengers.getName() === name) && (a => a.getFrom() === from));
+  async findOneByNameAndFromDate(name: string, from: Date): Promise<Booking | null> {
+    const booking = this.bookings.find(
+      ((a: { passengers: { getName: () => string } }) => a.passengers.getName() === name) &&
+        (a => a.getFrom() === from),
+    );
     return booking ? booking : null;
   }
 }
