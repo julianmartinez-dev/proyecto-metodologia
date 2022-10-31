@@ -14,6 +14,7 @@ class FindPassengerHandler {
     if (!passenger) {
       throw new Error('Passenger not found');
     }
+
     return passenger;
   }
 }
