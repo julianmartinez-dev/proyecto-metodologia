@@ -1,17 +1,17 @@
 export class CreateAccommodationCommand {
-  private readonly id: string;
+  // private readonly id: string;
   private readonly name: string;
   private readonly pricePerNight: number;
 
-  constructor(id: string, name: string, pricePerNight: number) {
-    this.id = id;
+  constructor( name: string, pricePerNight: number) {
+    // this.id = id;
     this.name = name;
     this.pricePerNight = pricePerNight;
   }
 
-  getId(): string {
-    return this.id;
-  }
+  // getId(): string {
+  //   return this.id;
+  // }
 
   getName(): string {
     return this.name;
