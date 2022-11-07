@@ -3,7 +3,7 @@ import { BookingStatus } from '../../../domain/entities/booking.entity';
 import { Passenger } from '../../../domain/entities/passenger.entity';
 
 export class CreateBookingCommand {
-  private readonly id: string;
+  // private readonly id: string;
   private readonly owner: Passenger;
   private readonly passengers: Passenger[];
   private readonly accomodation: Accommodation;
@@ -12,7 +12,7 @@ export class CreateBookingCommand {
   private readonly status: BookingStatus;
 
   constructor(
-    id: string,
+    // id: string,
     owner: Passenger,
     passengers: Passenger[],
     accomodation: Accommodation,
@@ -20,7 +20,7 @@ export class CreateBookingCommand {
     to: Date,
     status: BookingStatus,
   ) {
-    this.id = id;
+    // this.id = id;
     this.owner = owner;
     this.passengers = passengers;
     this.accomodation = accomodation;
@@ -28,9 +28,9 @@ export class CreateBookingCommand {
     this.to = to;
     this.status = status;
   }
-  getId(): string {
-    return this.id;
-  }
+  // getId(): string {
+  //   return this.id;
+  // }
 
   getOwner(): Passenger {
     return this.owner;

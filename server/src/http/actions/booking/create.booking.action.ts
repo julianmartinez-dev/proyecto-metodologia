@@ -4,10 +4,10 @@ import createBookingHandler from '../../../application/handlers/booking/create.b
 
 class CreateBookingAction {
   async run(req: Request, res: Response) {
-    const { id, owner, passengers, accomodation, from, to, status } = req.body;
+    const { owner, passengers, accomodation, from, to, status } = req.body;
 
     try {
-      const command = new CreateBookingCommand(id, owner, passengers, accomodation, from, to, status);
+      const command = new CreateBookingCommand(owner, passengers, accomodation, from, to, status);
       await createBookingHandler.execute(command);
 
       return res.status(201).json({ message: 'Booking created successfully' });

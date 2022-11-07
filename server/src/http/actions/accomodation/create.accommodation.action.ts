@@ -4,10 +4,10 @@ import createAccommodationHandler from '../../../application/handlers/accommodat
 
 class CreateAccommodationAction {
   async run(req: Request, res: Response) {
-    const { id, name, pricePerNight } = req.body;
+    const { name, pricePerNight } = req.body;
 
     try {
-      const command = new CreateAccommodationCommand(id, name, pricePerNight);
+      const command = new CreateAccommodationCommand( name, pricePerNight);
       await createAccommodationHandler.execute(command);
 
       return res.status(201).json({ message: 'Accommodation created successfully' });
