@@ -17,11 +17,12 @@ class CreatePassengerAction {
       identityCard: Joi.number().min(7).max(8).required(),
     });
 
-    try {
-      const value = control.validate({ fullName: fullName, email: email, identityCard: identityCard });
-    } catch (error: any) {
-      res.status(400).json({ messge: error.message });
+    const { error } = control.validate({ fullName, email, identityCard });
+
+    if (error) {
+      return res.status(400).json({ message: error.message });
     }
+    
     try {
       const command = new CreatePassengerCommand(fullName, email, identityCard);
       await createPassengerHandler.execute(command);
