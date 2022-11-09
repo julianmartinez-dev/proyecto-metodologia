@@ -6,6 +6,10 @@ class CreateAccommodationHandler {
   async execute(command: CreateAccommodationCommand) {
     const accommodation = Accommodation.create(command.getName(), command.getPricePerNight());
 
+    if (command.getPricePerNight() < 0) {
+      throw new Error('Invalid PricePerNight');
+    }
+
     await accommodationRepository.save(accommodation);
   }
 }

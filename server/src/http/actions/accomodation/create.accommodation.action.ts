@@ -1,34 +1,27 @@
 import { Request, Response } from 'express';
 import { CreateAccommodationCommand } from '../../../application/commands/accommodation/create.accommodation.command';
 import createAccommodationHandler from '../../../application/handlers/accommodation/create.accommodation.handler';
+import Joi from 'joi';
 
 class CreateAccommodationAction {
   async run(req: Request, res: Response) {
     const { name, pricePerNight } = req.body;
 
-    const Joi = require('joi');
-
     const control = Joi.object({
-      name: Joi.string()
-        .min(3)
-        .max(50)
-        .required(),
-      
-      pricePerNight: Joi.string()
-        .number()
-        .min(0.01)
-        .required(),
-    })
+      name: Joi.string().min(3).max(50).required(),
 
-    try{
-      const value = control.validate({name: name, pricePerNight : pricePerNight})
-    }
-    catch(error: any){
-      res.status(400).json({ message: error.message});
-    }
-    
+      pricePerNight: Joi.number().min(0.01).required(),
+    });
+
     try {
-      const command = new CreateAccommodationCommand( name, pricePerNight);
+      const value = control.validate({ name: name, pricePerNight: pricePerNight });
+    } catch (error: any) {
+      res.status(400).json({ message: error.message });
+      return;
+    }
+
+    try {
+      const command = new CreateAccommodationCommand(name, pricePerNight);
       await createAccommodationHandler.execute(command);
 
       return res.status(201).json({ message: 'Accommodation created successfully' });
