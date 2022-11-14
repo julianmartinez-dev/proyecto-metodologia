@@ -1,6 +1,7 @@
 import { v4 } from 'uuid';
 import { Passenger } from './passenger.entity';
 import { Accommodation } from './accommodation.entity';
+import uuidValidate from 'uuid-validate';
 
 export enum BookingStatus {
   pending = 'pending',
@@ -26,7 +27,7 @@ export class Booking {
     to: Date,
     status: BookingStatus = BookingStatus.pending,
   ) {
-    this.id = id;
+    this.id = v4();
     this.owner = owner;
     this.passengers = passengers;
     this.accommodation = accommodation;
@@ -43,18 +44,6 @@ export class Booking {
     to: Date,
     status: BookingStatus = BookingStatus.pending,
   ) {
-    //Validations
-    if (passengers.length < 1) {
-      throw new Error('A booking must have at least one passenger');
-    }
-    if (from > to) {
-      throw new Error('The booking must start before it ends');
-    }
-    const ownerInPassengers = passengers.find(passenger => passenger.getId() === owner.getId());
-    if (!ownerInPassengers) {
-      throw new Error('The owner must be in the passengers list');
-    }
-
     //Create new booking
     const id = v4();
     const booking = new Booking(id, owner, passengers, accommodation, from, to, status);

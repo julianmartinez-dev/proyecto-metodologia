@@ -14,7 +14,7 @@ class CreatePassengerAction {
         .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
         .required(),
 
-      identityCard: Joi.number().min(7).max(8).required(),
+      identityCard: Joi.string().min(7).max(9).required(),
     });
 
     const { error } = control.validate({ fullName, email, identityCard });

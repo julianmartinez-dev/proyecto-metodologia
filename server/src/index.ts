@@ -7,6 +7,7 @@ import winston from 'winston';
 import PassengerRoutes from './http/routes/passenger.routes';
 import AccomodationRoutes from './http/routes/accomodation.routes';
 import { Seeder } from './infrastructure/repositories/Seeders/SeedersAccomodations';
+import BookingRoutes from './http/routes/booking.routes';
 
 const app: express.Application = express();
 
@@ -32,6 +33,7 @@ app.use(express.json());
 // Add router
 routes.push(new PassengerRoutes(app));
 routes.push(new AccomodationRoutes(app));
+routes.push(new BookingRoutes(app))
 
 //Add Seeder
 const seeder = new Seeder();

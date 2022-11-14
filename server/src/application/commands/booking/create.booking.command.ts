@@ -55,4 +55,16 @@ export class CreateBookingCommand {
   getStatus(): BookingStatus {
     return this.status;
   }
+  
+  toPrimitives() {
+    return {
+      // id: this.id,
+      owner: this.owner,
+      passengers: this.passengers,
+      accomodation: this.accomodation,
+      from: this.from,
+      to: this.to,
+      status: this.status,
+    };
+  }
 }
