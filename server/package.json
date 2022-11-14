@@ -18,6 +18,7 @@
     "express": "^4.17.1",
     "express-winston": "^4.1.0",
     "joi": "^17.7.0",
+    "mongodb": "4.11",
     "uuid": "^9.0.0",
     "winston": "^3.3.3"
   },

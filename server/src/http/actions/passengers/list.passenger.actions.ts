@@ -14,12 +14,13 @@ class ListPassengersAction {
     const command = new FindByIdentityCardCommand(identityCard);
     try {
       const passenger = await findPassengerHandler.execute(command);
-      if (!passenger) {
+      if (passenger) {
+        return res.status(200).json({
+          ...passenger,
+        });
+      }else {
         return res.status(404).json({ message: 'Passenger not found' });
       }
-      return res.status(200).json({
-        ...passenger.toPrimitives(),
-      });
     } catch (error) {
       const { message } = error as Error;
       return res.status(500).json({ message: message });

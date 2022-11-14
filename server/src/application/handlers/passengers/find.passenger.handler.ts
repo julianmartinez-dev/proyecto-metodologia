@@ -1,4 +1,4 @@
-import passengerRepository from '../../../infrastructure/repositories/passenger.repository';
+import passengerRepository from '../../../infrastructure/repositories/mongodb/passenger.repository';
 import { UpdatePassengerCommand } from '../../commands/passenger/update.passenger.command';
 import { FindByIdentityCardCommand } from '../../commands/passenger/findByIdentityCard.passenger.command';
 import { validateIdentityCard } from '../../../helpers/index';

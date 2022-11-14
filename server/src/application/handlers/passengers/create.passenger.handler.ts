@@ -1,6 +1,6 @@
 import { Passenger } from '../../../domain/entities/passenger.entity';
 import { validateEmail, validateFullName, validateIdentityCard } from '../../../helpers';
-import passengerRepository from '../../../infrastructure/repositories/passenger.repository';
+import passengerRepository from '../../../infrastructure/repositories/mongodb/passenger.repository';
 import { CreatePassengerCommand } from '../../commands/passenger/create.passenger.command';
 
 class CreatePassengerHandler {

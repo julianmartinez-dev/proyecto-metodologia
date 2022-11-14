@@ -2,7 +2,6 @@ import { v4 } from 'uuid';
 
 export class Passenger {
   //propiedades
-
   private id: string;
   private fullname: string;
   private email: string;
