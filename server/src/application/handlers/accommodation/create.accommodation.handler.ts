@@ -1,5 +1,5 @@
 import { Accommodation } from '../../../domain/entities/accommodation.entity';
-import accommodationRepository from '../../../infrastructure/repositories/accommodation.repository';
+import accommodationRepository from '../../../infrastructure/repositories/mongodb/accomodation.repository';
 import { CreateAccommodationCommand } from '../../commands/accommodation/create.accommodation.command';
 
 class CreateAccommodationHandler {

@@ -1,4 +1,4 @@
-import accommodationRepository from '../../../infrastructure/repositories/accommodation.repository';
+import accommodationRepository from '../../../infrastructure/repositories/mongodb/accomodation.repository';
 import { findByNameAccommodationCommand } from '../../commands/accommodation/findByName.accommodation.command';
 
 class findAccommodationHandler {
