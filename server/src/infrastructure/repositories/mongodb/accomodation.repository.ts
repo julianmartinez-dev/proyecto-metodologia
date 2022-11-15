@@ -2,18 +2,18 @@ import { Accommodation } from '../../../domain/entities/accommodation.entity';
 import { mongoClient } from './mongo.configuration';
 
 class Repository {
-  private accommodations: Accommodation[];
-  constructor() {
-    this.accommodations = [];
-  }
+  private database: string = 'bookings';
+  private collection = 'accommodations';
 
   async save(accommodation: Accommodation): Promise<void> {
     try {
       await mongoClient.connect();
-      await mongoClient.db('bookings').collection('accommodations').insertOne(accommodation);
+      await mongoClient
+        .db(this.database)
+        .collection(this.collection)
+        .updateOne({ id: accommodation.getId() }, { $set: accommodation }, { upsert: true });
     } catch (error) {
-      const { message } = error as Error;
-      throw new Error(message);
+      console.log(error);
     } finally {
       await mongoClient.close();
     }
@@ -23,8 +23,8 @@ class Repository {
     try {
       await mongoClient.connect();
       const accommodation = (await mongoClient
-        .db('bookings')
-        .collection('accommodations')
+        .db(this.database)
+        .collection(this.collection)
         .findOne(
           {
             id: id,
@@ -43,15 +43,15 @@ class Repository {
   async findOneByName(name: string): Promise<Accommodation | null> {
     try {
       await mongoClient.connect();
-      const accommodation = (await mongoClient
-        .db('bookings')
-        .collection('accommodations')
+      const accommodation = await mongoClient
+        .db(this.database)
+        .collection(this.collection)
         .findOne(
           {
             name: name,
           },
           { projection: { _id: 0 } },
-        )) as Accommodation | null;
+        ) as Accommodation | null;
       return accommodation;
     } catch (error) {
       const { message } = error as Error;

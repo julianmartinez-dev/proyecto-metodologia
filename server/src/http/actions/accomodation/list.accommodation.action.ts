@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import accommodationRepository from '../../../infrastructure/repositories/accommodation.repository';
 import findAccommodationHandler from '../../../application/handlers/accommodation/find.accommodation.handler';
 import { findByNameAccommodationCommand } from '../../../application/commands/accommodation/findByName.accommodation.command';
 class listAccommodationAction {
@@ -13,7 +12,7 @@ class listAccommodationAction {
     }
 
     return res.status(200).json({
-      ...accommodation.toPrimitives(),
+      ...accommodation
     });
   }
 }
