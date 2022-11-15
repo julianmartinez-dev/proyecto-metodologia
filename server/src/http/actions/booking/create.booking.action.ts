@@ -34,8 +34,8 @@ class CreateBookingAction {
 
       return res.status(201).json({ message: 'Booking created successfully' });
     } catch (error) {
-      const { message, stack } = error as Error;
-      res.status(400).json({ message: message, stack });
+      const { message } = error as Error;
+      res.status(400).json({ message: message });
     }
   }
 }
