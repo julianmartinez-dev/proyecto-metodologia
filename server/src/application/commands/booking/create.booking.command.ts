@@ -1,46 +1,27 @@
-import { Accommodation } from '../../../domain/entities/accommodation.entity';
-import { BookingStatus } from '../../../domain/entities/booking.entity';
-import { Passenger } from '../../../domain/entities/passenger.entity';
-
 export class CreateBookingCommand {
   // private readonly id: string;
-  private readonly owner: Passenger;
-  private readonly passengers: Passenger[];
-  private readonly accomodation: Accommodation;
+  private readonly owner: string;
+  private readonly passengers: string[];
+  private readonly accomodation: string;
   private readonly from: Date;
   private readonly to: Date;
-  private readonly status: BookingStatus;
 
-  constructor(
-    // id: string,
-    owner: Passenger,
-    passengers: Passenger[],
-    accomodation: Accommodation,
-    from: Date,
-    to: Date,
-    status: BookingStatus,
-  ) {
-    // this.id = id;
+  constructor(owner: string, passengers: string[], accomodation: string, from: Date, to: Date) {
     this.owner = owner;
     this.passengers = passengers;
     this.accomodation = accomodation;
     this.from = from;
     this.to = to;
-    this.status = status;
   }
-  // getId(): string {
-  //   return this.id;
-  // }
-
-  getOwner(): Passenger {
+  getOwner(): string {
     return this.owner;
   }
 
-  getPassengers(): Passenger[] {
+  getPassengers(): string[] {
     return this.passengers;
   }
 
-  getAccomodation(): Accommodation {
+  getAccomodation(): string {
     return this.accomodation;
   }
 
@@ -52,19 +33,13 @@ export class CreateBookingCommand {
     return this.to;
   }
 
-  getStatus(): BookingStatus {
-    return this.status;
-  }
-  
   toPrimitives() {
     return {
-      // id: this.id,
       owner: this.owner,
       passengers: this.passengers,
       accomodation: this.accomodation,
       from: this.from,
       to: this.to,
-      status: this.status,
     };
   }
 }

@@ -10,13 +10,13 @@ export enum BookingStatus {
 }
 
 export class Booking {
-  private id: string;
+  private id: string = v4();
   private owner: Passenger;
   private passengers: Passenger[];
   private accommodation: Accommodation;
   private from: Date;
   private to: Date;
-  private status: BookingStatus;
+  private status: BookingStatus = BookingStatus.pending;
 
   constructor(
     id: string,
@@ -25,15 +25,13 @@ export class Booking {
     accommodation: Accommodation,
     from: Date,
     to: Date,
-    status: BookingStatus = BookingStatus.pending,
+    status: BookingStatus
   ) {
-    this.id = v4();
     this.owner = owner;
     this.passengers = passengers;
     this.accommodation = accommodation;
     this.from = from;
     this.to = to;
-    this.status = status;
   }
 
   public static create(
@@ -42,13 +40,9 @@ export class Booking {
     accommodation: Accommodation,
     from: Date,
     to: Date,
-    status: BookingStatus = BookingStatus.pending,
   ) {
     //Create new booking
-    const id = v4();
-    const booking = new Booking(id, owner, passengers, accommodation, from, to, status);
-
-    return booking;
+    return new Booking(v4(), owner, passengers, accommodation, from, to, BookingStatus.pending);
   }
 
   changeOwner(owner: Passenger): void {
@@ -67,7 +61,7 @@ export class Booking {
     this.to = to;
   }
   changeStatus(status: BookingStatus): void {
-    if (this.status != 'pending') {
+    if (this.status != BookingStatus.pending) {
       this.status = status;
     } else {
       throw new Error('Status is already Pending');
