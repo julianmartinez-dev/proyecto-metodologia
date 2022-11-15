@@ -1,6 +1,7 @@
-import passengerRepository from '../../../infrastructure/repositories/passenger.repository';
+import passengerRepository from '../../../infrastructure/repositories/mongodb/passenger.repository';
 import { UpdatePassengerCommand } from '../../commands/passenger/update.passenger.command';
 import { validateEmail, validateFullName, validateIdentityCard } from '../../../helpers/index';
+import { Passenger } from '../../../domain/entities/passenger.entity';
 
 class UpdatePassengerHandler {
   async execute(command: UpdatePassengerCommand) {
@@ -20,10 +21,15 @@ class UpdatePassengerHandler {
     if (!passenger) {
       throw new Error('Passenger not found');
     }
-    passenger.changeEmail(command.getEmail());
-    passenger.changeFullname(command.getFullName());
-    passenger.changeIdentityCard(command.getIdentityCard());
-    await passengerRepository.save(passenger);
+    
+    const passengerUpdated = new Passenger(
+      command.getId(),
+      command.getFullName(),
+      command.getEmail(),
+      command.getIdentityCard(),
+    )
+
+    await passengerRepository.save(passengerUpdated);
   }
 }
 
