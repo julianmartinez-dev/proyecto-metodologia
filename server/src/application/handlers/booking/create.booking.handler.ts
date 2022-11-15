@@ -6,35 +6,34 @@ import { CreateBookingCommand } from '../../commands/booking/create.booking.comm
 import { CreatePassengerCommand } from '../../commands/passenger/create.passenger.command';
 import createPassengerHandler from '../passengers/create.passenger.handler';
 import { Accommodation } from '../../../domain/entities/accommodation.entity';
+import { Passenger } from '../../../domain/entities/passenger.entity';
 
 class CreateBookingHandler {
   async execute(command: CreateBookingCommand) {
 
-    //TODO: Fix this, owner.getIdentityCard() is not a function
     const passengers = command.getPassengers();
-    const owner = command.getOwner();
+    let owner = command.getOwner();
     const accommodation = command.getAccomodation();
+    console.log(owner)
 
-    console.log('passengers', passengers);
-    console.log('owner', owner);
 
-    const passenger = await passengerRepository.findOneByIdentityCard(owner.getIdentityCard());
-    if (!passenger) {
+    const ownerInPassengers = passengers.includes(owner);
+    if (!ownerInPassengers) {
       console.log('passenger not found');
-    }else{
+    } else {
       console.log('passenger found');
     }
 
-    const booking = Booking.create(
-      command.getOwner(),
-      command.getPassengers(),
-      command.getAccomodation(),
-      command.getFrom(),
-      command.getTo(),
-      command.getStatus(),
-    );
+    // const booking = Booking.create(
+    //   command.getOwner(),
+    //   command.getPassengers(),
+    //   command.getAccomodation(),
+    //   command.getFrom(),
+    //   command.getTo(),
+    //   command.getStatus(),
+    // );
 
-    await bookingRepository.save(booking);
+    // await bookingRepository.save(booking);
   }
 }
 
