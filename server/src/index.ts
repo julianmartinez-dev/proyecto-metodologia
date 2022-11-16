@@ -8,6 +8,7 @@ import PassengerRoutes from './http/routes/passenger.routes';
 import AccomodationRoutes from './http/routes/accomodation.routes';
 import { Seeder } from './infrastructure/Seeders/SeedersAccomodations';
 import BookingRoutes from './http/routes/booking.routes';
+import { MongoDBSeeder } from './infrastructure/Seeders/SeederMongo';
 
 const app: express.Application = express();
 
@@ -36,8 +37,8 @@ routes.push(new AccomodationRoutes(app));
 routes.push(new BookingRoutes(app));
 
 //Add Seeder
-const seeder = new Seeder();
-seeder.generate();
+const seeder = new MongoDBSeeder();
+// seeder.generate(); // Uncomment this line to seed the database, then comment it again
 
 app.listen(3000, () => {
   routes.forEach((route: CommonRoutes) => {
