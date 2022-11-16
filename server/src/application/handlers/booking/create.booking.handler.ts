@@ -1,7 +1,7 @@
 import { Booking } from '../../../domain/entities/booking.entity';
 import { CreateBookingCommand } from '../../commands/booking/create.booking.command';
 import accommodationRepository from '../../../infrastructure/repositories/mongodb/accomodation.repository';
-import bookingRepository from '../../../infrastructure/repositories/booking.repository';
+import bookingRepository from '../../../infrastructure/repositories/mongodb/booking.repository';
 import passengerRepository from '../../../infrastructure/repositories/mongodb/passenger.repository';
 import { Passenger } from '../../../domain/entities/passenger.entity';
 

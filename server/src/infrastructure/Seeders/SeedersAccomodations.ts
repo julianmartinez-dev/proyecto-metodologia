@@ -1,5 +1,5 @@
-import { Accommodation } from '../../../domain/entities/accommodation.entity';
-import accommodationRepository from '../accommodation.repository';
+import { Accommodation } from '../../domain/entities/accommodation.entity';
+import accommodationRepository from '../repositories/memory/accommodation.repository';
 
 export class Seeder {
   private accommodations: Array<Accommodation> = [];

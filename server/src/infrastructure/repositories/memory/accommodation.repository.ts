@@ -1,4 +1,4 @@
-import { Accommodation } from '../../domain/entities/accommodation.entity';
+import { Accommodation } from '../../../domain/entities/accommodation.entity';
 
 class Repository {
   private accommodations: Accommodation[];

@@ -1,11 +1,11 @@
 import { findBookingCommands } from "../../commands/booking/find.booking.command";
-import bookingRepository from "../../../infrastructure/repositories/booking.repository";
+import bookingRepository from "../../../infrastructure/repositories/mongodb/booking.repository";
 
 class findBookingHandler{
     async execute(command: findBookingCommands){
-        const booking = bookingRepository.findOneByNameAndFromDate(command.getPassenger(), command.getFromDate())
+        const booking = await bookingRepository.findOneByNameAndFromDate(command.getPassenger(), command.getFromDate())
         if (!booking) {
-            throw new Error('accommodation not found');
+            throw new Error('Booking not found');
           }
           return booking;
     }

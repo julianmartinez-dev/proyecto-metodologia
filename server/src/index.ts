@@ -6,7 +6,7 @@ import expressWinston from 'express-winston';
 import winston from 'winston';
 import PassengerRoutes from './http/routes/passenger.routes';
 import AccomodationRoutes from './http/routes/accomodation.routes';
-import { Seeder } from './infrastructure/repositories/Seeders/SeedersAccomodations';
+import { Seeder } from './infrastructure/Seeders/SeedersAccomodations';
 import BookingRoutes from './http/routes/booking.routes';
 
 const app: express.Application = express();

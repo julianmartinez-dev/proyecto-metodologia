@@ -9,6 +9,17 @@ export enum BookingStatus {
   accepted = 'accepted',
 }
 
+export interface IBooking {
+  //This is crappy, but I don't know how to do it better
+  id: string;
+  owner: string;
+  passengers: string[];
+  accommodation: string;
+  from: Date;
+  to: Date;
+  status: string;
+}
+
 export class Booking {
   private id: string = v4();
   private owner: Passenger;
@@ -25,7 +36,7 @@ export class Booking {
     accommodation: Accommodation,
     from: Date,
     to: Date,
-    status: BookingStatus
+    status: BookingStatus,
   ) {
     this.owner = owner;
     this.passengers = passengers;
@@ -34,13 +45,7 @@ export class Booking {
     this.to = to;
   }
 
-  public static create(
-    owner: Passenger,
-    passengers: Passenger[],
-    accommodation: Accommodation,
-    from: Date,
-    to: Date,
-  ) {
+  public static create(owner: Passenger, passengers: Passenger[], accommodation: Accommodation, from: Date, to: Date) {
     //Create new booking
     return new Booking(v4(), owner, passengers, accommodation, from, to, BookingStatus.pending);
   }
@@ -92,6 +97,19 @@ export class Booking {
 
   getStatus(): BookingStatus {
     return this.status;
+  }
+
+  getOwner(): Passenger {
+    return this.owner;
+  }
+  getPassengers(): Passenger[] {
+    return this.passengers;
+  }
+  getAccommodation(): Accommodation {
+    return this.accommodation;
+  }
+  getTo(): Date {
+    return this.to;
   }
 
   toPrimitives(): any {

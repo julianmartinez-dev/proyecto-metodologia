@@ -1,17 +1,17 @@
-import { Booking } from '../../../domain/entities/booking.entity';
+import { Booking, IBooking } from '../../../domain/entities/booking.entity';
 import { mongoClient } from './mongo.configuration';
 
 class Repository {
   private database: string = 'bookings';
   private collection: string = 'bookings';
 
-  async save(booking: Booking): Promise<void> {
+  async save(booking: IBooking): Promise<void> {
     try {
       await mongoClient.connect();
       await mongoClient
         .db(this.database)
         .collection(this.collection)
-        .updateOne({ id: booking.getId() }, { $set: booking }, { upsert: true });
+        .updateOne({ id: booking.id }, { $set: booking }, { upsert: true });
     } catch (error) {
       console.log(error);
     } finally {
@@ -19,7 +19,7 @@ class Repository {
     }
   }
 
-  async findOneById(id: string): Promise<Booking | null> {
+  async findOneById(id: string): Promise<IBooking | null> {
     try {
       await mongoClient.connect();
       const booking = (await mongoClient
@@ -30,8 +30,8 @@ class Repository {
             id: id,
           },
           { projection: { _id: 0 } },
-        )) as Booking | null;
-      return booking;
+        )) as IBooking | null;
+      return booking
     } catch (error) {
       const { message } = error as Error;
       throw new Error(message);
@@ -42,6 +42,8 @@ class Repository {
 
 
   async findOneByNameAndFromDate(name: string, from: Date): Promise<Booking | null> {
+    const date = from.toISOString().split('T')[0];
+    console.log({ name, date})
     try {
       await mongoClient.connect();
       const booking = (await mongoClient
@@ -49,8 +51,8 @@ class Repository {
         .collection(this.collection)
         .findOne(
           {
-            from: from,
-            name: name,
+            "from": date,
+            "passengers.fullname": name
           },
           { projection: { _id: 0 } },
         )) as Booking | null;

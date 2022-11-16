@@ -1,4 +1,4 @@
-import accommodationRepository from '../../../../src/infrastructure/repositories/accommodation.repository';
+import accommodationRepository from '../../../../src/infrastructure/repositories/memory/accommodation.repository';
 import { Accommodation } from '../../../../src/domain/entities/accommodation.entity';
 import CreateAccommodationHandler from '../../../../src/application/handlers/accommodation/create.accommodation.handler';
 import { CreateAccommodationCommand } from '../../../../src/application/commands/accommodation/create.accommodation.command';
