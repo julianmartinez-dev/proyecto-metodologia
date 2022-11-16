@@ -43,7 +43,7 @@ class Repository {
   async findOneByName(name: string): Promise<Accommodation | null> {
     try {
       await mongoClient.connect();
-      const accommodation = await mongoClient
+      const accommodation = (await mongoClient
         .db(this.database)
         .collection(this.collection)
         .findOne(
@@ -51,7 +51,7 @@ class Repository {
             name: name,
           },
           { projection: { _id: 0 } },
-        ) as Accommodation | null;
+        )) as Accommodation | null;
       return accommodation;
     } catch (error) {
       const { message } = error as Error;

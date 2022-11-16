@@ -1,12 +1,11 @@
 import { v4 } from 'uuid';
 
 export class Passenger {
-  //propiedades
   private id: string;
   private fullname: string;
   private email: string;
   private identityCard: string;
-  //constructor
+
   constructor(id: string, fullname: string, email: string, identityCard: string) {
     this.id = id;
     this.fullname = fullname;
@@ -14,7 +13,6 @@ export class Passenger {
     this.identityCard = identityCard;
   }
 
-  //metodos
   public static create(fullname: string, email: string, identityCard: string): Passenger {
     const id = v4();
     const passeger = new Passenger(id, fullname, email, identityCard);

@@ -22,7 +22,7 @@ class CreatePassengerAction {
     if (error) {
       return res.status(400).json({ message: error.message });
     }
-    
+
     try {
       const command = new CreatePassengerCommand(fullName, email, identityCard);
       await createPassengerHandler.execute(command);

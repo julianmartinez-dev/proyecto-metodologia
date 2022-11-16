@@ -12,7 +12,7 @@ class listAccommodationAction {
     }
 
     return res.status(200).json({
-      ...accommodation
+      ...accommodation,
     });
   }
 }

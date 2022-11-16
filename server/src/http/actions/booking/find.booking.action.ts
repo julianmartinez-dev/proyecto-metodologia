@@ -6,7 +6,7 @@ class FindBookingAction {
   async run(req: Request, res: Response) {
     const name: string = req?.query?.name as string;
     const from: string = req?.query?.date as string;
-    
+
     const date: Date = new Date(from);
     const command = new findBookingCommands(name, date);
     try {

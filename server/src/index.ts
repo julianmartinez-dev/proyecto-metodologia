@@ -33,7 +33,7 @@ app.use(express.json());
 // Add router
 routes.push(new PassengerRoutes(app));
 routes.push(new AccomodationRoutes(app));
-routes.push(new BookingRoutes(app))
+routes.push(new BookingRoutes(app));
 
 //Add Seeder
 const seeder = new Seeder();

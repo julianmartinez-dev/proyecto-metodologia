@@ -18,7 +18,7 @@ class ListPassengersAction {
         return res.status(200).json({
           ...passenger,
         });
-      }else {
+      } else {
         return res.status(404).json({ message: 'Passenger not found' });
       }
     } catch (error) {

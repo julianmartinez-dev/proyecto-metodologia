@@ -10,11 +10,11 @@ class CreateAccommodationAction {
     const control = Joi.object({
       name: Joi.string().min(3).max(50).required(),
       pricePerNight: Joi.number().min(1).required(),
-    })
+    });
 
-    const { error } = control.validate({name, pricePerNight });
+    const { error } = control.validate({ name, pricePerNight });
 
-    if(error) {
+    if (error) {
       return res.status(400).json({ message: error.message });
     }
 

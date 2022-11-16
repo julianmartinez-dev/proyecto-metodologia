@@ -1,4 +1,4 @@
-import { Booking } from '../../../domain/entities/booking.entity';
+import { Booking, IBooking } from '../../../domain/entities/booking.entity';
 import { CreateBookingCommand } from '../../commands/booking/create.booking.command';
 import accommodationRepository from '../../../infrastructure/repositories/mongodb/accomodation.repository';
 import bookingRepository from '../../../infrastructure/repositories/mongodb/booking.repository';
@@ -40,8 +40,9 @@ class CreateBookingHandler {
     }
 
     const booking = Booking.create(owner, passengersFromDb, accommodation, command.getFrom(), command.getTo());
+    const ibooking: IBooking = booking.toPrimitives(); //This is crappy, but I don't know how to fix it
 
-    await bookingRepository.save(booking);
+    await bookingRepository.save(ibooking);
   }
 }
 

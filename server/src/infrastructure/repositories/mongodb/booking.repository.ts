@@ -31,7 +31,7 @@ class Repository {
           },
           { projection: { _id: 0 } },
         )) as IBooking | null;
-      return booking
+      return booking;
     } catch (error) {
       const { message } = error as Error;
       throw new Error(message);
@@ -40,10 +40,9 @@ class Repository {
     }
   }
 
-
   async findOneByNameAndFromDate(name: string, from: Date): Promise<Booking | null> {
     const date = from.toISOString().split('T')[0];
-    console.log({ name, date})
+    console.log({ name, date });
     try {
       await mongoClient.connect();
       const booking = (await mongoClient
@@ -51,8 +50,8 @@ class Repository {
         .collection(this.collection)
         .findOne(
           {
-            "from": date,
-            "passengers.fullname": name
+            from: date,
+            'passengers.fullname': name,
           },
           { projection: { _id: 0 } },
         )) as Booking | null;

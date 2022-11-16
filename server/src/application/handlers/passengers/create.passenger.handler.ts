@@ -20,8 +20,8 @@ class CreatePassengerHandler {
     if (!validateIdentityCard(passenger.getIdentityCard())) {
       throw new Error('Invalid identity card');
     }
-    
-    if(await passengerRepository.findOneByIdentityCard(passenger.getIdentityCard())){
+
+    if (await passengerRepository.findOneByIdentityCard(passenger.getIdentityCard())) {
       throw new Error('Passenger already exists');
     }
 

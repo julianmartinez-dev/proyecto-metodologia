@@ -9,11 +9,7 @@ class UpdateAccommodationHandler {
     if (!accommodation) {
       throw new Error('Accommodation not found');
     }
-    const accommodationUpdated = new Accommodation(
-      command.getId(),
-      command.getName(),
-      command.getPricePerNight()
-    )
+    const accommodationUpdated = new Accommodation(command.getId(), command.getName(), command.getPricePerNight());
     await accommodationRepository.save(accommodationUpdated);
   }
 }

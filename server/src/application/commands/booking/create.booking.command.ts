@@ -1,5 +1,4 @@
 export class CreateBookingCommand {
-  // private readonly id: string;
   private readonly owner: string;
   private readonly passengers: string[];
   private readonly accomodation: string;

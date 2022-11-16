@@ -9,7 +9,7 @@ class BookingRoutes extends CommonRoutes {
   }
   setUpRoutes(): Application {
     this.app.post('/booking', createBookingAction.run);
-    this.app.get('/booking', findBookingAction.run)
+    this.app.get('/booking', findBookingAction.run);
     this.app.put('/booking/:id', updateBookingAction.run);
 
     return this.app;

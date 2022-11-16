@@ -5,8 +5,7 @@ import { validateIdentityCard } from '../../../helpers/index';
 
 class FindPassengerHandler {
   async execute(command: FindByIdentityCardCommand) {
-
-    if(!validateIdentityCard(command.getIdentityCard())){
+    if (!validateIdentityCard(command.getIdentityCard())) {
       throw new Error('Invalid identity card');
     }
     const passenger = await passengerRepository.findOneByIdentityCard(command.getIdentityCard());
