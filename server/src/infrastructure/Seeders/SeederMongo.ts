@@ -17,6 +17,10 @@ export class MongoDBSeeder {
     this.accommodations.push(Accommodation.create('Five Stars', 1000));
     this.accommodations.push(Accommodation.create('Penthouse', 1200));
 
+    this.passengers.push(Passenger.create('Romina Acevedo', 'romina@acevedo.com', '123456789'));
+    this.passengers.push(Passenger.create('Matias Laferla', 'matias@laferla.com', '123456799'));
+    this.passengers.push(Passenger.create('Francisco Ambrosioni', 'francisco@ambrosioni.com', '123456489'));
+    this.passengers.push(Passenger.create('Fabricio Peirano', 'fabricio@peirano.com', '122456789'));
     this.passengers.push(Passenger.create('John Doe','john@doe.com', '12345678'));
     this.passengers.push(Passenger.create('Jane Doe','jane@doe.com', '12345679'));
     this.passengers.push(Passenger.create('John Smith', 'john@smith.com', '12345680'));
