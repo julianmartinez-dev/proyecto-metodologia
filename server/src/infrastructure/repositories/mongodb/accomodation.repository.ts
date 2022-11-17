@@ -22,7 +22,7 @@ class Repository {
   async findOneById(id: string): Promise<Accommodation | null> {
     try {
       await mongoClient.connect();
-      const accommodation = (await mongoClient
+      const accommodation = await mongoClient
         .db(this.database)
         .collection(this.collection)
         .findOne(
@@ -30,8 +30,12 @@ class Repository {
             id: id,
           },
           { projection: { _id: 0 } },
-        )) as Accommodation | null;
-      return accommodation;
+        );
+      if (accommodation) {
+        return Accommodation.fromPrimitives(accommodation);
+      } else {
+        return null;
+      }
     } catch (error) {
       const { message } = error as Error;
       throw new Error(message);
@@ -43,7 +47,7 @@ class Repository {
   async findOneByName(name: string): Promise<Accommodation | null> {
     try {
       await mongoClient.connect();
-      const accommodation = (await mongoClient
+      const accommodation = await mongoClient
         .db(this.database)
         .collection(this.collection)
         .findOne(
@@ -51,8 +55,12 @@ class Repository {
             name: name,
           },
           { projection: { _id: 0 } },
-        )) as Accommodation | null;
-      return accommodation;
+        );
+      if (accommodation) {
+        return Accommodation.fromPrimitives(accommodation);
+      } else {
+        return null;
+      }
     } catch (error) {
       const { message } = error as Error;
       throw new Error(message);

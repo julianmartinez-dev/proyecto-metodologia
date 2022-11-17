@@ -1,3 +1,4 @@
+import { Booking } from '../../../domain/entities/booking.entity';
 import bookingRepository from '../../../infrastructure/repositories/mongodb/booking.repository';
 import { UpdateBookingCommand } from '../../commands/booking/update.booking.command';
 
@@ -7,8 +8,7 @@ class UpdateBookingHandler {
     if (!booking) {
       throw new Error('Booking not found');
     }
-    booking.status = command.getStatus();
-    console.log(booking);
+    booking.changeStatus(command.getStatus());
     await bookingRepository.save(booking);
   }
 }

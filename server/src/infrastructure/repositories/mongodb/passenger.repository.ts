@@ -30,26 +30,12 @@ class Repository {
             identityCard: identityCard,
           },
           { projection: { _id: 0 } },
-        )) as Passenger | null;
-
-      return passenger;
-    } catch (error) {
-      const { message } = error as Error;
-      throw new Error(message);
-    } finally {
-      await mongoClient.close();
-    }
-  }
-
-  async getAllPassengers(): Promise<Passenger[] | null> {
-    try {
-      await mongoClient.connect();
-      const passengers = (await mongoClient
-        .db(this.database)
-        .collection(this.collection)
-        .find({}, { projection: { _id: 0 } })
-        .toArray()) as unknown as Passenger[] | null;
-      return passengers;
+        ))
+      if (passenger) {
+         return Passenger.fromPrimitives(passenger);
+      }else{
+        return null;
+      }
     } catch (error) {
       const { message } = error as Error;
       throw new Error(message);
@@ -69,8 +55,12 @@ class Repository {
             id: id,
           },
           { projection: { _id: 0 } },
-        )) as Passenger | null;
-      return passenger;
+        ))
+        if (passenger) {
+          return Passenger.fromPrimitives(passenger);
+        } else {
+          return null;
+        }
     } catch (error) {
       const { message } = error as Error;
       throw new Error(message);

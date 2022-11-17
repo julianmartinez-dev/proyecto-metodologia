@@ -1,4 +1,4 @@
-import { Passenger } from '../../domain/entities/passenger.entity';
+import { Passenger } from '../../../domain/entities/passenger.entity';
 
 class Repository {
   private passengers: Passenger[];

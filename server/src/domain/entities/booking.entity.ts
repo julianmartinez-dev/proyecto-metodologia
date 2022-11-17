@@ -1,23 +1,11 @@
 import { v4 } from 'uuid';
 import { Passenger } from './passenger.entity';
 import { Accommodation } from './accommodation.entity';
-import uuidValidate from 'uuid-validate';
 
 export enum BookingStatus {
   pending = 'pending',
   rejected = 'rejected',
   accepted = 'accepted',
-}
-
-export interface IBooking {
-  //This is crappy, but I don't know how to do it better
-  id: string;
-  owner: string;
-  passengers: string[];
-  accommodation: string;
-  from: Date;
-  to: Date;
-  status: string;
 }
 
 export class Booking {
@@ -38,11 +26,13 @@ export class Booking {
     to: Date,
     status: BookingStatus,
   ) {
+    this.id = id;
     this.owner = owner;
     this.passengers = passengers;
     this.accommodation = accommodation;
     this.from = from;
     this.to = to;
+    this.status = status;
   }
 
   public static create(owner: Passenger, passengers: Passenger[], accommodation: Accommodation, from: Date, to: Date) {
@@ -66,10 +56,10 @@ export class Booking {
     this.to = to;
   }
   changeStatus(status: BookingStatus): void {
-    if (this.status != BookingStatus.pending) {
+    if (status != this.status) {
       this.status = status;
     } else {
-      throw new Error('Status is already Pending');
+      throw new Error('Status is already ' + status);
     }
   }
 

@@ -1,17 +1,17 @@
-import { Booking, IBooking } from '../../../domain/entities/booking.entity';
+import { Booking } from '../../../domain/entities/booking.entity';
 import { mongoClient } from './mongo.configuration';
 
 class Repository {
   private database: string = 'bookings';
   private collection: string = 'bookings';
 
-  async save(booking: IBooking): Promise<void> {
+  async save(booking: Booking): Promise<void> {
     try {
       await mongoClient.connect();
       await mongoClient
         .db(this.database)
         .collection(this.collection)
-        .updateOne({ id: booking.id }, { $set: booking }, { upsert: true });
+        .updateOne({ id: booking.getId() }, { $set: booking }, { upsert: true });
     } catch (error) {
       console.log(error);
     } finally {
@@ -19,7 +19,7 @@ class Repository {
     }
   }
 
-  async findOneById(id: string): Promise<IBooking | null> {
+  async findOneById(id: string): Promise<Booking | null> {
     try {
       await mongoClient.connect();
       const booking = (await mongoClient
@@ -30,8 +30,12 @@ class Repository {
             id: id,
           },
           { projection: { _id: 0 } },
-        )) as IBooking | null;
-      return booking;
+        ))
+         if (booking) {
+           return Booking.fromPrimitives(booking);
+         } else {
+           return null;
+         }
     } catch (error) {
       const { message } = error as Error;
       throw new Error(message);
@@ -54,9 +58,13 @@ class Repository {
             'passengers.fullname': name,
           },
           { projection: { _id: 0 } },
-        )) as Booking | null;
+        ))
+        if (booking) {
+          return Booking.fromPrimitives(booking);
+        } else {
+          return null;
+        }
 
-      return booking;
     } catch (error) {
       const { message } = error as Error;
       throw new Error(message);
