@@ -1,6 +1,5 @@
 import accommodationRepository from '../../../../src/infrastructure/repositories/mongodb/accomodation.repository';
 import { Accommodation } from '../../../../src/domain/entities/accommodation.entity';
-import CreateAccommodationHandler from '../../../../src/application/handlers/accommodation/create.accommodation.handler';
 import { CreateAccommodationCommand } from '../../../../src/application/commands/accommodation/create.accommodation.command';
 import createAccommodationHandler from '../../../../src/application/handlers/accommodation/create.accommodation.handler';
 
@@ -8,7 +7,7 @@ describe('Create Accommodation', () => {
   it('should create an accommodation', async () => {
     const accommodationMock = Accommodation.create('Hotel', 50);
     accommodationRepository.save = jest.fn().mockResolvedValueOnce(accommodationMock);
-    await CreateAccommodationHandler.execute(new CreateAccommodationCommand('Hotel', 50));
+    await createAccommodationHandler.execute(new CreateAccommodationCommand('Hotel', 50));
     expect(accommodationRepository.save).toBeCalled();
   });
 
