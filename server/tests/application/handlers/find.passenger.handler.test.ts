@@ -1,4 +1,4 @@
-import passengerRepository from "../../../src/infrastructure/repositories/passenger.repository";
+import passengerRepository from "../../../src/infrastructure/repositories/mongodb/passenger.repository";
 import {Passenger} from "../../../src/domain/entities/passenger.entity";
 import findPassengerHandler from "../../../src/application/handlers/passengers/find.passenger.handler";
 import {
@@ -10,9 +10,7 @@ describe('Find Passenger Handler', () => {
   it('should be find passenger', async () => {
     const passengerMock = Passenger.create('Pepito perez', 'pepitoperez@yopmail.com', '12345678');
     passengerRepository.findOneByIdentityCard = jest.fn().mockResolvedValue(passengerMock);
-
     const result = await findPassengerHandler.execute(new FindByIdentityCardCommand('12345678'));
-
     expect(result).toStrictEqual(passengerMock);
   });
   it('should throw an error when identity card is invalid', async () => {

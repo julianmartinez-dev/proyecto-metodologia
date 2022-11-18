@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import Joi from 'joi';
 import { FindByIdentityCardCommand } from '../../../application/commands/passenger/findByIdentityCard.passenger.command';
 import findPassengerHandler from '../../../application/handlers/passengers/find.passenger.handler';
 
@@ -6,9 +7,14 @@ class ListPassengersAction {
   async run(req: Request, res: Response) {
     const { identityCard } = req.params;
 
-    if (identityCard === '') {
-      res.status(400).send({ message: 'identityCard is required' });
-      return;
+    const control = Joi.object({
+      identityCard: Joi.string().min(8).max(9).required(),
+    });
+
+    const { error } = control.validate({ identityCard });
+
+    if (error) {
+      return res.status(400).json({ message: error.message });
     }
 
     const command = new FindByIdentityCardCommand(identityCard);
